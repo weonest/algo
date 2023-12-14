@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// 스타트와 링크
 public class _14889 {
 
     static int N;
@@ -66,7 +67,8 @@ public class _14889 {
         int result = Math.abs(teamA - teamB);
 
         if (result == 0) {
-            System.out.println(result);
+            min = result;
+            return;
         }
         min = Math.min(result, min);
     }
