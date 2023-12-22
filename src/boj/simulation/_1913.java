@@ -3,7 +3,6 @@ package boj.simulation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 // 달팽이
 public class _1913 {
@@ -12,10 +11,11 @@ public class _1913 {
     static int[][] map;
     static int T;
 
+    static int[] dx = {1, 0, -1, 0};
+    static int[] dy = {0, 1, 0, -1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
 
         N = Integer.parseInt(br.readLine());
 
@@ -23,39 +23,10 @@ public class _1913 {
 
         T = Integer.parseInt(br.readLine());
 
-        int value = N * N;
-        int limit = N;
-
-        int x = 0;
-        int y = 0;
-        int t = 0;
-
-        while (value > 0) {
-            x = t;
-            for (int i = y; i < limit; i++) {
-                map[i][x] = value--;
-            }
-
-            y = limit - 1;
-            for (int i = x + 1; i < limit; i++) {
-                map[y][i] = value--;
-            }
-
-            x = limit - 1;
-            for (int i = y - 1; i >= t; i--) {
-                map[i][x] = value--;
-            }
-
-            y = t;
-            for (int i = x - 1; i > t; i--) {
-                map[y][i] = value--;
-            }
-            t++;
-            y++;
-            limit--;
-        }
+        make();
 
         StringBuilder sb = new StringBuilder();
+
         for (int[] arr : map) {
             for (int arr2 : arr) {
                 sb.append(arr2 + " ");
@@ -73,6 +44,37 @@ public class _1913 {
                 }
             }
         }
+    }
 
+    static void make() {
+        int value = N * N;
+        int x = 0;
+        int y = 0;
+        int dir = 0;
+        map[0][0] = value--;
+
+        while (value > 0) {
+            if (map[x][y] == 1) {
+                break;
+            }
+
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
+
+            if (nx >= 0 && ny >= 0 && nx < N && ny < N) {
+                if (map[nx][ny] == 0) {
+                    map[nx][ny] = value--;
+                    x = nx;
+                    y = ny;
+                    continue;
+                }
+                dir = (dir + 1) % 4;
+            }
+            else {
+                dir = (dir + 1) % 4;
+            }
+
+
+        }
     }
 }
