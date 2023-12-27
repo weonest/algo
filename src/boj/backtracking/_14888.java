@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+// 연산자 끼워넣기
 public class _14888 {
     static int N;
 
