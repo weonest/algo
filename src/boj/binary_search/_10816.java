@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-// 숫자 카드 2 https://we1cometomeanings.tistory.com/232
+// 숫자 카드 2 https://we1cometomeanings.tistory.com/232 // https://st-lab.tistory.com/267
 public class _10816 {
 
 
@@ -37,6 +37,9 @@ public class _10816 {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < M; i++) {
             int key = Integer.parseInt(st.nextToken());
+            int lower = firstIndex(key);
+            int upper = lastIndex(key);
+            System.out.println(lower + " " + upper);
             sb.append(lastIndex(key) - firstIndex(key)).append(" ");
         }
 
@@ -64,7 +67,7 @@ public class _10816 {
 
     static int lastIndex(int key) {
         int lo = 0;
-        int hi = arr.length - 1;
+        int hi = arr.length;
 
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
