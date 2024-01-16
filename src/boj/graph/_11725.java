@@ -9,52 +9,57 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-// 바이러스
-public class _2606 {
+// 트리의 부모 찾기
+public class _11725 {
 
-    static int N, M;
+    static int N;
     static List<Integer>[] graph;
-    static int answer;
+    static int[] parents;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
         N = Integer.parseInt(br.readLine());
+        parents = new int[N + 1];
         graph = new List[N + 1];
-        for (int i = 1; i <= N; i++) {
+
+        for (int i = 0; i <= N; i++) {
             graph[i] = new ArrayList<>();
         }
 
-        M = Integer.parseInt(br.readLine());
-        for (int i = 0; i < M; i++) {
+        for (int i = 1; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int cur = Integer.parseInt(st.nextToken());
-            int next = Integer.parseInt(st.nextToken());
-            graph[cur].add(next);
-            graph[next].add(cur);
+            int nex = Integer.parseInt(st.nextToken());
+
+            graph[cur].add(nex);
+            graph[nex].add(cur);
         }
 
-        bfs(1);
-        System.out.println(answer);
+        bfs();
+        for (int i = 2; i <= N; i++) {
+            System.out.println(parents[i]);
+        }
     }
 
-    static void bfs(int start) {
+    static void bfs() {
         Queue<Integer> q = new ArrayDeque<>();
-        q.add(start);
+        q.add(1);
         boolean[] visit = new boolean[N + 1];
-        visit[start] = true;
+        visit[1] = true;
+
         while (!q.isEmpty()) {
             int cur = q.poll();
 
             for (int v : graph[cur]) {
                 if (!visit[v]) {
                     visit[v] = true;
-                    answer++;
+                    parents[v] = cur;
                     q.add(v);
                 }
             }
         }
-    }
 
+    }
 }
