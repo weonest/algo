@@ -1,4 +1,4 @@
-package pgs.binary_search;
+package pgs;
 
 import java.util.Arrays;
 
