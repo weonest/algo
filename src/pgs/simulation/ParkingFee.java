@@ -1,4 +1,4 @@
-package pgs;
+package pgs.simulation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

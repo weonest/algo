@@ -1,4 +1,4 @@
-package pgs;
+package pgs.bfs;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

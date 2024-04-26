@@ -1,4 +1,4 @@
-package pgs;
+package pgs.simulation;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package pgs;
+package pgs.dfs;
 
 public class NQueen {
     int[] map;

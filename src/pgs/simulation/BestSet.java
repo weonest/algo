@@ -1,4 +1,4 @@
-package pgs;
+package pgs.simulation;
 
 // 최고의 집합
 public class BestSet {
